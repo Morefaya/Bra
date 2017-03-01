@@ -87,7 +87,10 @@ int	brackets(char *str)
 		}
 		i++;
 	}
-	return (0);
+	if (!j && !k && !l)
+		return (0);
+	else
+		return (42);
 }
 
 int	main(int ac, char **av)
