@@ -73,15 +73,9 @@ void	putnbr_in_str(int nb, char **str)
 {
 	char	base_str[] = "0123456789";
 
-	/*if (nb == -2147483648)
-	{
-		//write(1, "-2147483648", 11);
-		return ;
-	}*/
 	if (nb < 0)
 	{
 		nb *= -1;
-		//write(1, "-", 1);
 		**str = '-';
 		(*str)++;
 	}
@@ -92,7 +86,6 @@ void	putnbr_in_str(int nb, char **str)
 	}
 	else
 	{
-		//write(1, base + nb, 1);
 		**str = *(base_str + nb);
 		(*str)++;
 	}
@@ -128,15 +121,10 @@ char	*ft_itoa_base(int nb, int base)
 			return (NULL);
 		tmp = str;
 		if (base == 10)
-		{
 			putnbr_in_str(nb, &tmp);
-		//	write(1, "\n@\n", 3);
 		}
 		else
-		{
 			putnbr_hex_str(nb, base, &tmp);
-		//	write(1, "\n#\n", 3);
-		}
 	}
 	return (str);
 }
