@@ -91,7 +91,7 @@ void	putnbr_in_str(int nb, char **str)
 	}
 }
 
-void	putnbr_hex_str(int nb, int base, char **str)
+void	putnbr_hex_str(unsigned int nb, unsigned int base, char **str)
 {
 	char	base_str[] = "0123456789ABCDEF";
 
@@ -112,8 +112,10 @@ char	*ft_itoa_base(int nb, int base)
 	char	*str;
 	char	*tmp;
 	int		len = calc_len(nb, base);
-	
-	if (nb == -2147483648 && base == 10)
+
+	if (base < 2 || base > 16)
+		return (NULL);
+	else if (nb == -2147483648 && base == 10)
 		str = ft_strdup("-2147483648");
 	else
 	{
@@ -122,20 +124,8 @@ char	*ft_itoa_base(int nb, int base)
 		tmp = str;
 		if (base == 10)
 			putnbr_in_str(nb, &tmp);
-		}
 		else
 			putnbr_hex_str(nb, base, &tmp);
 	}
 	return (str);
-}
-
-int	main(void)
-{
-	int		nb = 2147483647;
-	int		base = 16;
-	char	*str;
-
-	str = ft_itoa_base(nb, base);
-	ft_putstr(str);
-	return (0);
 }
